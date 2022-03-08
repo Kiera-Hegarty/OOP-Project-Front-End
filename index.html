@@ -1,0 +1,162 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Creatures</title> -->
+    <!-- <script src="sea.js"> -->
+     <html>
+       <script>
+            let creatures=
+[
+    {
+        "name":"Octopus",
+        "mammal":false,
+        "dorsalFin":false,
+        "lifeExpectancy":4,
+    },
+    {
+        "name":"Norwhal",
+        "mammal":true,
+        "dorsalFin":false,
+        "lifeExpectancy":50,
+    },
+    {
+        "name":"Orca",
+        "mammal":true,
+        "dorsalFin":true,
+        "lifeExpectancy":50,
+    },
+    {
+        "name":"Clownfish",
+        "mammal":false,
+        "dorsalFin":false,
+        "lifeExpectancy":3,
+    }
+
+];
+let refTable=""
+function doit(){
+    refTable=document.createElement("table");
+    refTable.border=1
+    for(let i=0;i<creatures.length;i++){
+        showCreature(creatures[i].name,creatures[i].mammal,creatures[i].dorsalFin,creatures[i].lifeExpectancy)
+        // showCreature(creatures[i].name,creatures[i].lifeExpectancy)
+    }
+}
+
+function showCreature(name1, mammal1, dorsalFin1, lifeExpectancy1){
+    // function showCreature(name1, lifeExpectancy1){
+                let refRow=document.createElement("tr")
+                let refTd1=document.createElement("td")
+                let refTd2=document.createElement("td")
+                let refTd3=document.createElement("td")
+                let refTd4=document.createElement("td")
+
+                refTd1.innerHTML=name1
+                refTd2.innerHTML=mammal1
+                refTd3.innerHTML=dorsalFin1
+                refTd4.innerHTML=lifeExpectancy1
+
+                refRow.appendChild(refTd1);
+                refRow.appendChild(refTd2);
+                refRow.appendChild(refTd3);
+                refRow.appendChild(refTd4);
+
+                refTable.appendChild(refRow)
+                document.body.appendChild(refTable)
+}
+function inputForm(){
+    if(btn1.value=="Show Form"){
+        form1.style.visibility="visible";
+        btn1.value="Hide Form"
+    }else{
+        form1.style.visibility="hidden";
+        btn1.value="Show Form"
+    }}
+
+    function createCreature(){
+ let Name = na.value;
+ let Mammal = mammal.value;
+ let DorsalFin = dorsalFin.value;
+ let LifeExpectancy = lifeExpectancy.value;
+ if(Name==""){
+     nameErr.style.visibility="visible"
+ }else{
+     nameErr.style.visibility="hidden"
+ }
+//  if(Mammal==""){
+//     mammalErr.style.visibility="visible"
+// }else{
+//     mammalErr.style.visibility="hidden"
+// }
+// if(DorsalFin==""){
+//     dorsalFinErr.style.visibility="visible"
+// }else{
+//     dorsalFinErr.style.visibility="hidden"
+// }
+if(LifeExpectancy==""){
+    lifeExpectancyErr.style.visibility="visible"
+}else{
+    lifeExpectancyErr.style.visibility="hidden"
+}
+if(Name!="" && Mammal!="" && DorsalFin!="" && LifeExpectancy!=""){
+    // if(Name!="" && LifeExpectancy!=""){
+    if(parseInt(LifeExpectancy)>=0 && parseInt(LifeExpectancy)<=500){
+        lifeExpectancyErr.style.visibility="hidden"
+        creatures.push({
+            "name":Name,
+            "mammal":Mammal,
+            "dorsalFin": DorsalFin,
+            "lifeExpectancy": LifeExpectancy})
+        showCreature(Name,Mammal,DorsalFin,LifeExpectancy)
+        // showCreature(Name,LifeExpectancy)
+    }else{
+        lifeExpectancyErr.innerHTML="Invalid Life Expectancy range is 0-500"
+        lifeExpectancyErr.style.visibility="visible"
+    }
+}
+}
+
+    </script>
+</head>
+<body onload="doit()"></body>
+
+<input id="btn1" type="button" value="Show Form" onclick="inputForm()">
+    
+<div id="form1" style="visibility:hidden">
+    <h1>
+        Sea Creatures
+    </h1>
+
+      
+       <!-- <label for="name">Name</label> -->
+       Name:<input type="Text" id="na">
+       <span id="nameErr" style="color:red;visibility: hidden">**Name is missing</span><br>
+
+       <!-- <label for="mammal">Mammal</label> -->
+       Mammal:<select id="mammal">
+           <option vaule="true">true</option>
+           <option value="false">false</option>
+       </select>
+
+       <!-- <label for="dorsalFin">Dorsal Fin</label> -->
+       DorsalFin:<select id="dorsalFin">
+           <option vaule="true">true</option>
+           <option value="false">false</option>
+       </select>
+
+       <!-- <label for="lifeExpectancy">Life Expectancy</label> -->
+       Life Expectancy:<input type="Text" id="lifeExpectancy">
+       <span id="lifeExpectancyErr" style="color:red;visibility: hidden">**Life Expectancy is missing</span><br>
+    
+       <input type="Button" value="Save" onclick="createCreature()">
+    <!-- <input type="Button" value="Create" onclick="createRecord()"> -->
+    <!-- <input type="Button" value="Edit" onclick="replace()">
+    <input type="Button" value="Delete" onclick="remove()"> -->
+
+</div>
+    
+
+</html>
