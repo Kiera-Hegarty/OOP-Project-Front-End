@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function slapItOnTheDOM(creature){
         const creatureLi = document.createElement('li');
         creatureLi.dataset.id = creature.id
-        creatureLi.innerHTML = `<span>${creature.name} ${creature.mammal} ${creature.dorsalFin} ${creature.lifeExpectancy}</span>`
+        creatureLi.innerHTML = `<span>${creature.name} <br>
+        Is the sea creature a mammal? ${creature.mammal}<br>
+        Does the sea creature have dorsal fin? ${creature.dorsalFin}<br>
+        What is life expectancy of the sea creature? ${creature.lifeExpectancy}</span>`
         creatures.appendChild(creatureLi);
 
         const buttond = document.createElement('button')
@@ -21,14 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         buttond.setAttribute("id", `delete-button-${creature.id}`)
         buttond.innerText = "Delete"
         creatures.appendChild(buttond);
-        buttond.addEventListener('click', () => {deleteCreature(creature)})
+        buttond.addEventListener('click', () => deleteCreature(creature))
 
         const buttonu = document.createElement('button')
         buttonu.dataset.id = creature.id
         buttonu.setAttribute("id", `update-button-${creature.id}`)
         buttonu.innerText = "Update"
         creatures.appendChild(buttonu);
-        buttonu.addEventListener('click', () => {editCreature(creature)})
+        buttonu.addEventListener('click', () => editCreature(creature))
     }
 
     function gatherFormData(){
@@ -71,7 +74,7 @@ function editCreature(creature){
     <option vaule="true">true</option>
     <option value="false">false</option>
     </select><br>
-    Life Expectancy:<input type="Text" name="lifeExpectancy" value="${creature.lifeExpectancy}><br>
+    Life Expectancy:<input type="Text" name="lifeExpectancy" value="${creature.lifeExpectancy}"><br>
     <input type="submit" name="">`
     creatureInfo.append(eForm)
     eForm.addEventListener('submit', (event) => updateCreature(event, creature))
@@ -84,38 +87,66 @@ function updateCreature(event, creature){
 }
 function updateOnBackend(updatedCreature, id){
     console.log("fetch began")
-    return fetch('http://localhost:8080/replace/${id}',{
+    // event.preventDefault();
+    // let updatedCreature = gatherFormData()
+    return fetch(`http://localhost:8080/replace/${id}`,{
         method: "PUT",
-        body: JSON.stringify(updatedCreature),
+        // body: JSON.stringify(updatedCreature),
         headers: {
             'Content-Type': 'application/json',
-        }
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(updatedCreature)
     })
-    .then(res => res.json())
+    .then(response => response.json())
 }
 function updateOnFrontEnd(creature){
-    console.log(`${creature.name} updated`)
+    console.log(`${creature.name} has been updated`)
     const creatureSpan = creatures.querySelector(`li[data-id="${creature.id}"]>span`)
-    creatureSpan.innerText = `${creature.name} ${creature.mammal} ${creature.dorsalFin} ${creature.lifeExpectancy} `
-    console.log(`${creature.name} updated`)
+    creatureSpan.innerHTML = `<span>${creature.name} <br>
+    Is the sea creature a mammal? ${creature.mammal}<br>
+    Does the sea creature have dorsal fin? ${creature.dorsalFin}<br>
+    What is life expectancy of the sea creature? ${creature.lifeExpectancy}</span>`
+    console.log(`${creature.name} sea creature has been updated`)
 }
 
 //Remove
-function deleteCreature(creature){
-    console.log(`${creature.name} is going`)
+// function deleteCreature(creature, id){
+//     console.log(`${creature.name} is being removed`)
+//     const creatureLi = document.querySelector(`[data-id="${creature.id}"]`);
+//     const buttond = document.querySelector(`#delete-button-${creature.id}`);
+//     const buttonu = document.querySelector(`#update-button-${creature.id}`);
+//     return fetch (`http://localhost:8080/remove/${id}`,{
+//         method: "DELETE"
+//     })
+//     // .then(response => response.json())
+//     .then(() => {
+//         creatureLi.remove();
+//         buttond.remove()
+//         buttonu.remove()
+//     })
+//     .then(console.log(`${creature.name} is gone`))
+// }
+// })
+
+function deleteCreature(creature) {
+    console.log(`${creature.name} is going away`)
     const creatureLi = document.querySelector(`[data-id="${creature.id}"]`);
     const buttond = document.querySelector(`#delete-button-${creature.id}`);
     const buttonu = document.querySelector(`#update-button-${creature.id}`);
-    return fetch (`http://localhost:8080/remove/{id}`, {
-        method: "DELETE"
+
+    return  fetch(`http://localhost:8080/remove/${creature.id}`, {
+      method: "DELETE"
     })
-    .then(response => response.json())
+    // .then(response => response.json())
     .then(() => {
-        creatureLi.remove();
-        buttond.remove()
-        buttonu.remove()
+      creatureLi.remove();
+      buttond.remove()
+      buttonu.remove()
     })
-}
+    .then(console.log(`${creature.name} is gone`))
+
+  }
 })
 
 // const creatures = "http://localhost"
