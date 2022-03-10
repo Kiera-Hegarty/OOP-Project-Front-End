@@ -1,4 +1,5 @@
 **Cloud Native - Sea Creature Project**
+
 Kiera Hegarty
 
 **Introduction**
@@ -18,5 +19,13 @@ Frond-end Developement: Working CRUD Functionality front-end website with API in
 **Planning**
 
 Jira Software was used to create a Kanband board modelled as a Scrum. Within this I craeted epics and user stories linking to issues for both Back-end and Front-end of my project. Tasks were craeted within user stories to break down tasks.
-Throughout my project I completed various sprints.
+Throughout my project I completed various sprints. In thos case I create 2, one for back-end and one for front-end.
+
+![Jira](https://user-images.githubusercontent.com/98025303/157713124-24679963-04b3-4aa1-94be-46edfde6c088.jpg)
+
+Throughout this project I updated GitHub with new working code for each step I took. There are 2 GitHub repos for both the Back-end and Front-end of the project.
+
+**Database**
+
+In this project 2 databases were needed; MySQL to store persistent data from the application, 
 
