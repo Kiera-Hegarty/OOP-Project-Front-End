@@ -19,11 +19,17 @@ Frond-end Developement: Working CRUD Functionality front-end website with API in
 **Planning**
 
 Jira Software was used to create a Kanband board modelled as a Scrum. Within this I craeted epics and user stories linking to issues for both Back-end and Front-end of my project. Tasks were craeted within user stories to break down tasks.
-Throughout my project I completed various sprints. In thos case I create 2, one for back-end and one for front-end.
 
 ![Jira](https://user-images.githubusercontent.com/98025303/157713124-24679963-04b3-4aa1-94be-46edfde6c088.jpg)
 
-Throughout this project I updated GitHub with new working code for each step I took. There are 2 GitHub repos for both the Back-end and Front-end of the project.
+Throughout my project I completed various sprints. In thos case I create 2, one for back-end and one for front-end.
+
+![epics](https://user-images.githubusercontent.com/98025303/157725707-9a4e4631-0ed8-4c7d-98c0-e1ee79440c0b.png)
+
+Throughout this project I updated GitHub with new working code for each step I took. There are 2 GitHub repos for both the Back-end and Front-end of the project. This is the network graph for my back-end repository.
+
+![git](https://user-images.githubusercontent.com/98025303/157724931-eb68143f-b6f5-4688-b40e-9cd48877d8fb.jpg)
+
 Jira board link: https://kiera-hegarty.atlassian.net/jira/software/projects/KAH/boards/4/roadmap
 
 **Database**
