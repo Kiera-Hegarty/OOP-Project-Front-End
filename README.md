@@ -99,5 +99,8 @@ I then used JavaScript to to connect to the database through API integration. Th
 
 ![JS](https://user-images.githubusercontent.com/98025303/157723290-648419a3-bf66-4815-bc43-d783021ef11d.jpg)
 
+**Acknowledgements**
+https://betterprogramming.pub/build-a-crud-js-app-with-fetches-f82143a48b6d: Gave me a struture to follow while creating the front-end of my project
+
 
 
